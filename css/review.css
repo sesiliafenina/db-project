@@ -83,14 +83,14 @@ textarea{
 }
 
 .center{
-  display: block;
   float: left;
+  margin-left: -10px;
 }
 
 .center .stars{
   height: 40px;
-  width: 500px;
-  text-align: center;
+  width: 217px;
+  text-align: left;
 }
 .stars input{
   display: none;
