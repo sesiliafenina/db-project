@@ -1,0 +1,56 @@
+.checked {
+  color: orange;
+}
+
+.book_content{
+  margin-left: 20px;
+  width: 85%;
+  display: inline;
+  float: left;
+}
+
+.book_title{
+  font-size: 40px;
+  display: block;
+}
+
+.book_cover{
+  width: 160px;
+  float: left;
+  display: inline;
+}
+
+.book_summary{
+  float: left;
+  display: block;
+  width: 100%;
+}
+
+.book_container{
+  float: left;
+  display: block;
+  width: 100%;
+  background-color: #F2CF9B;
+  padding: 20px 20px 20px 20px;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.default_button{
+  text-decoration: none;
+  border: none;
+  float: left;
+  text-align: center;
+  display: block;
+  color: white;
+  background-color: #7D551A;
+  cursor: pointer;
+  padding: 5px 5px;
+  width: 9%;
+  font-size: 20px;
+}
+
+.container{
+  min-height: 100%;
+  margin: 0 auto;
+}

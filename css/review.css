@@ -1,0 +1,73 @@
+.default_button_1{
+  text-decoration: none;
+  float: left;
+  border: none;
+  text-align: center;
+  display: block;
+  color: white;
+  background-color: #7D551A;
+  cursor: pointer;
+  padding: 5px 5px;
+  width: 9%;
+  font-size: 20px;
+}
+
+.default_button_2{
+  text-decoration: none;
+  float: right;
+  border: none;
+  text-align: center;
+  display: block;
+  color: white;
+  background-color: #7D551A;
+  cursor: pointer;
+  padding: 5px 5px;
+  width: 9%;
+  font-size: 20px;
+}
+
+.book_content{
+  margin-left: 20px;
+  width: 85%;
+  display: inline;
+  float: left;
+}
+
+.book_title{
+  font-size: 40px;
+  display: block;
+}
+
+.book_cover{
+  width: 160px;
+  float: left;
+  display: inline;
+}
+
+.review_title{
+  float: left;
+  display: block;
+}
+
+textarea{
+  float: left;
+  display: block;
+  width: 100%;
+  height: 300px;
+  resize: none;
+  margin-bottom: 20px;
+}
+
+.review{
+  float: left;
+  display: block;
+  width: 100%;
+  background-color: #F2CF9B;
+  padding: 20px 20px 20px 20px;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.login{
+  float: right;
+}

@@ -4,14 +4,16 @@
     <meta charset='UTF-8'/>
     <title>Good Reviews</title>
     <link rel='stylesheet' href='css/styles.css'/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="script/main.js"></script>
   </head>
   <body>
     <div class='container'>
+      <button class='login' onclick="document.getElementById('id01').style.display='block'">Login</button>
       <a class='logo' href="index.html"></a>
       <form class="search-container" action="action_page.php">
         <input id='search-query' type="text" placeholder="Search.." name="search">
-        <button type="submit"><i class="fa fa-search"></i>Q</button>
+        <button class='search' type="submit"><i class="fa fa-search"></i></button>
       </form>
       <div class='navbar'>
         <ul>
@@ -28,13 +30,39 @@
             </div>
           </li>
           <li><a href="community.html">Community</a></li>
-          <li><a href="login.html">Login/Sign Up</a></li>
         </ul>
       </div>
       <div class='container_2'>
         <img src='assets/background.jpg'/>
-        <button class="make_review">Make A Review Now!</button>
+        <a class="make_review"href="community.html">Make A Review Now!</a>
       </div>
+    </div>
+    <div id="id01" class="modal">
+      <span onclick="document.getElementById('id01').style.display='none'"
+            class="close" title="Close Modal">&times;</span>
+
+      <!-- Modal Content -->
+      <form class="modal-content animate" action="/action_page.php">
+        <div class="imgcontainer">
+          <img src="assets/avatar.jpg" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+          <!-- <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label> -->
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+          <button type="submit" class="submitbtn">Login</button>
+        </div>
+      </form>
     </div>
   </body>
 </html>
