@@ -8,12 +8,17 @@ async function getData(url=''){
   return response.json();
 }
 
-function get(){
+function getHttp(){
   getData('https://jsonplaceholder.typicode.com/posts')
   .then(data => {
     console.log(data);
+    for (i=0; i<data.length; i++){
+      console.log(data[i]);
+    }
   });
 }
+
+// get();
 
 // Example POST method implementation:
 async function postData(url = '', data = {}) {
@@ -34,7 +39,7 @@ async function postData(url = '', data = {}) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-function post(){
+function postHttp(){
   postData('https://jsonplaceholder.typicode.com/posts', { answer: 42 })
     .then(data => {
       console.log(data);
