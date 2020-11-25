@@ -9,16 +9,23 @@ async function getData(url=''){
 }
 
 function getHttp(){
-  getData('http://54.165.167.219:80/search?title=Mobility+IGO+AUTOPOWER+3000+SERIES+(+PS0221-10+)')
+  getData('http://54.165.167.219:80/sortByRating?rating_preference=increasing')
   .then(data => {
     console.log(data);
-    // for (i=0; i<data.length; i++){
-    //   console.log(data[i]);
-    // }
+    createHTML(data);
   });
 }
 
-getHttp();
+function createHTML(reviewData){
+    var rawTemplate = document.getElementById("booksTemplate").innerHTML;
+    var compiledTemplate = Handlebars.compile(rawTemplate);
+    var ourGeneratedHTML = compiledTemplate(reviewData);
+
+    var bookContainer = document.getElementById("book_container");
+    bookContainer.innerHTML = ourGeneratedHTML;
+}
+
+// getHttp();
 
 // Example POST method implementation:
 async function postData(url = '', data = {}) {
