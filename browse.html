@@ -4,7 +4,7 @@
     <meta charset='UTF-8'/>
     <title>Community</title>
     <link rel='stylesheet' href='css/styles.css'/>
-    <link rel='stylesheet' href='css/community.css'/>
+    <link rel='stylesheet' href='css/browse.css'/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script>
@@ -13,7 +13,7 @@
       // execute the compiled template and print the output to the console
       console.log(template({ doesWhat: "rocks!" }));
     </script>
-    <script src="script/main.js"></script>
+    <script src="script/browse.js"></script>
   </head>
   <body>
     <div class='container'>
@@ -42,17 +42,18 @@
       <div id="book_container" class='book_container'></div>
       <script id="booksTemplate" type="text/x-handlebars-template">
         {{#each this}}
-          <!-- <img class='book_cover' src="assets/placeholder.png"/>
-          <div class='book_content'>
-            <a class='book_title'>Book Title</a>
-            <h3 class='author'>by Author</h3>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <p class='book_summary'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus, dui ac dictum commodo, lorem urna hendrerit velit, vel tincidunt mi odio eu tellus. Sed at urna dui. Aenean gravida non sem id maximus. Nam pulvinar non erat vitae condimentum. Vivamus consequat, odio vel vehicula placerat, metus massa finibus erat, eu sodales velit urna quis mauris. Mauris pellentesque magna nec mauris scelerisque tincidunt. Integer et congue nibh. Mauris sagittis nibh nec mi dictum, at tincidunt odio luctus. Nunc porttitor, ligula et ultrices semper, nulla sem semper nibh, eu dignissim massa massa vitae sem.</p>
-            <a class="default_button" href='review.html'>Review</a> -->
+          <div class='item_container'>
+            <img class='book_cover' src="{{imUrl}}"/>
+            <div class='book_content'>
+              <button class='book_title' onclick="nextPage()" >{{title}}</button>
+              <h3 class='author'>{{price}}</h3>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <p class='book_summary'>{{description}}</p>
+            </div>
           </div>
         {{/each}}
       </script>

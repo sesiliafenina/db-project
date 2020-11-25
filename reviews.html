@@ -14,7 +14,6 @@
       console.log(template({ doesWhat: "rocks!" }));
     </script>
     <script src="script/main.js"></script>
-    <script src="script/reviews.js"></script>
   </head>
   <body>
     <div class='container'>
@@ -40,17 +39,17 @@
           <li><a href="add_book.html">Add a Book</a></li>
         </ul>
       </div>
-      <div id="book_container" class='book_container'>
+      <div id='book_container' class='book_container'>
         <img class='book_cover' src="assets/placeholder.png"/>
         <div class='book_content'>
-          <a class='book_title'>Book Title</a>
-          <h3 class='author'>by Author</h3>
+          <h1 id='book_title' class='book_title'></h1>
+          <h3 id='author' class='author'></h3>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star"></span>
           <span class="fa fa-star"></span>
-          <p class='book_summary'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus, dui ac dictum commodo, lorem urna hendrerit velit, vel tincidunt mi odio eu tellus. Sed at urna dui. Aenean gravida non sem id maximus. Nam pulvinar non erat vitae condimentum. Vivamus consequat, odio vel vehicula placerat, metus massa finibus erat, eu sodales velit urna quis mauris. Mauris pellentesque magna nec mauris scelerisque tincidunt. Integer et congue nibh. Mauris sagittis nibh nec mi dictum, at tincidunt odio luctus. Nunc porttitor, ligula et ultrices semper, nulla sem semper nibh, eu dignissim massa massa vitae sem.</p>
+          <p id='book_summary' class='book_summary'></p>
           <a class="default_button" href='review.html'>Review</a>
         </div>
       </div>
@@ -59,12 +58,12 @@
           {{#each this}}
             <div id="reviews_content" class="reviews_content">
               <h3>{{summary}}</h3>
-              <!-- rating -->
-              <span id="star1" class="fa fa-star checked"></span>
-              <span id="star2" class="fa fa-star checked"></span>
-              <span id="star3" class="fa fa-star"></span>
-              <span id="star4" class="fa fa-star"></span>
-              <span id="star5" class="fa fa-star"></span>
+              {{#times overall}}
+                <span class="fa fa-star checked"></span>
+              {{/times}}
+              {{#times_minus overall}}
+                <span class="fa fa-star"></span>
+              {{/times_minus}}
               <h4>{{reviewerName}}</h4>
               <p>{{{reviewText}}}</p>
             </div>
@@ -99,5 +98,6 @@
         </div>
       </form>
     </div>
+    <script src="script/reviews.js"></script>
   </body>
 </html>
