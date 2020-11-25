@@ -12,6 +12,10 @@
 .book_title{
   font-size: 40px;
   display: block;
+  border: none;
+  background-color: Transparent;
+  margin-left: -10px;
+  cursor: pointer;
 }
 
 .book_cover{
