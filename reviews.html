@@ -2,13 +2,19 @@
 <html lang='en'>
   <head>
     <meta charset='UTF-8'/>
-    <title>Good Reviews</title>
+    <title>Community</title>
     <link rel='stylesheet' href='css/styles.css'/>
-    <link rel='stylesheet' href='css/add_book.css'/>
+    <link rel='stylesheet' href='css/reviews.css'/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="script/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script>
+      // compile the template
+      var template = Handlebars.compile("Handlebars <b>{{doesWhat}}</b>");
+      // execute the compiled template and print the output to the console
+      console.log(template({ doesWhat: "rocks!" }));
+    </script>
+    <script src="script/main.js"></script>
+    <script src="script/reviews.js"></script>
   </head>
   <body>
     <div class='container'>
@@ -16,7 +22,7 @@
       <a class='logo' href="index.html"></a>
       <form class="search-container" action="action_page.php">
         <input id='search-query' type="text" placeholder="Search.." name="search">
-        <button class='search' type="submit"><i class="fa fa-search"></i></button>
+        <button type="submit"><i class="fa fa-search"></i></button>
       </form>
       <div class="navbar">
         <ul>
@@ -34,21 +40,36 @@
           <li><a href="add_book.html">Add a Book</a></li>
         </ul>
       </div>
-      <div class='book_form'>
+      <div id="book_container" class='book_container'>
         <img class='book_cover' src="assets/placeholder.png"/>
         <div class='book_content'>
-          <h3 class='book_title'>Book Title</h3>
-          <input id = 'bookTitle' type="text" placeholder="Book Title" name="search">
-          <h3 class='author'>Price</h3>
-          <input id = 'bookPrice' type="text" placeholder="Price" name="search">
-          <br/><br/><br/>
-          <!-- IM SORRY I CANT FIGURE OUT HOW TO WRITE THIS ON 2 LINES -->
-          <br/><br/>
-          <textarea id = 'bookDescription' class="book_contents" rows="8" cols="80" placeholder="Write a short summary about the book..."></textarea>
-          <br/><br/>
-          <a class="default_button_1" href="community.html">Back</a>
-          <a class="default_button_2" onclick= {addBook()} >Add Book</a>
+          <a class='book_title'>Book Title</a>
+          <h3 class='author'>by Author</h3>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          <p class='book_summary'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus, dui ac dictum commodo, lorem urna hendrerit velit, vel tincidunt mi odio eu tellus. Sed at urna dui. Aenean gravida non sem id maximus. Nam pulvinar non erat vitae condimentum. Vivamus consequat, odio vel vehicula placerat, metus massa finibus erat, eu sodales velit urna quis mauris. Mauris pellentesque magna nec mauris scelerisque tincidunt. Integer et congue nibh. Mauris sagittis nibh nec mi dictum, at tincidunt odio luctus. Nunc porttitor, ligula et ultrices semper, nulla sem semper nibh, eu dignissim massa massa vitae sem.</p>
+          <a class="default_button" href='review.html'>Review</a>
         </div>
+      </div>
+      <div id="reviews_container" class="reviews_container">
+        <script id="reviewsTemplate" type="text/x-handlebars-template">
+          {{#each this}}
+            <div id="reviews_content" class="reviews_content">
+              <h3>{{summary}}</h3>
+              <!-- rating -->
+              <span id="star1" class="fa fa-star checked"></span>
+              <span id="star2" class="fa fa-star checked"></span>
+              <span id="star3" class="fa fa-star"></span>
+              <span id="star4" class="fa fa-star"></span>
+              <span id="star5" class="fa fa-star"></span>
+              <h4>{{reviewerName}}</h4>
+              <p>{{{reviewText}}}</p>
+            </div>
+          {{/each}}
+        </script>
       </div>
     </div>
     <div id="id01" class="modal">
