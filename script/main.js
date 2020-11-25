@@ -9,16 +9,16 @@ async function getData(url=''){
 }
 
 function getHttp(){
-  getData('https://jsonplaceholder.typicode.com/posts')
+  getData('http://54.165.167.219:80/search?title=Mobility+IGO+AUTOPOWER+3000+SERIES+(+PS0221-10+)')
   .then(data => {
     console.log(data);
-    for (i=0; i<data.length; i++){
-      console.log(data[i]);
-    }
+    // for (i=0; i<data.length; i++){
+    //   console.log(data[i]);
+    // }
   });
 }
 
-// get();
+getHttp();
 
 // Example POST method implementation:
 async function postData(url = '', data = {}) {
