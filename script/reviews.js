@@ -26,7 +26,7 @@ async function getReviews(url=''){
 }
 
 function getHttp(){
-  getReviews('http://54.165.167.219:80/sortByRating?rating_preference=increasing')
+  getReviews('http://54.243.84.231:80/sortByRating?rating_preference=increasing')
   .then(data => {
     console.log(data);
     createHTML(data);

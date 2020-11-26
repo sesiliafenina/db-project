@@ -8,16 +8,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="script/main.js"></script>
+    <script src="script/add_book.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
   </head>
   <body>
     <div class='container'>
       <button class='login' onclick="document.getElementById('id01').style.display='block'">Login</button>
       <a class='logo' href="index.html"></a>
-      <form class="search-container" action="action_page.php">
-        <input id='search-query' type="text" placeholder="Search.." name="search">
-        <button class='search' type="submit"><i class="fa fa-search"></i></button>
-      </form>
+      <div class="search-container">
+        <input
+          id="search-query"
+          type="text"
+          placeholder="Search.."
+          name="search"
+        />
+        <button class="search" type="submit" onclick="nextPage()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
       <div class="navbar">
         <ul>
           <li><a href=" index.html">Home</a></li>

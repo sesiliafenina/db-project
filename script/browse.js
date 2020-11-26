@@ -1,3 +1,33 @@
+window.onload = renderPage();
+
+function renderPage(){
+  // get data from previous page
+  var data = localStorage.getItem('title');
+  if (data != undefined){
+    console.log(data);
+    var search = document.getElementsByClassName('search-title')[0];
+    search.innerHTML = 'Search = ' + data;
+    //by right should do this after we move to next page
+    localStorage.removeItem('title');
+    getReviews('http://54.243.84.231:80/search?title=' + data)
+    .then(data => {
+      console.log(data);
+      createHTML(data);
+    });
+  }
+  else{
+    getHttp();
+  }
+}
+
+function nextPage(){
+  var query = document.getElementById('search-query').value;
+  console.log(query);
+
+  localStorage.setItem('title', query);
+  window.location.href = "browse.html";
+}
+
 async function getReviews(url=''){
   const response = await fetch(url, {
     method: 'GET',
@@ -9,14 +39,12 @@ async function getReviews(url=''){
 }
 
 function getHttp(){
-  getReviews('http://54.165.167.219:80/search?title=test')
+  getReviews('http://54.243.84.231:80/search?title=test')
   .then(data => {
     console.log(data);
     createHTML(data);
   });
 }
-
-getHttp();
 
 function createHTML(reviewData){
     var rawTemplate = document.getElementById("booksTemplate").innerHTML;
@@ -37,6 +65,5 @@ function nextPage(){
   //   'price' : price,
   //   'summary' : summary
   // };
-  localStorage.setItem('objectToPass', data);
-  window.location.href = "reviews.html";
+
 }

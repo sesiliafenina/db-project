@@ -7,22 +7,23 @@
     <link rel='stylesheet' href='css/browse.css'/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <script>
-      // compile the template
-      var template = Handlebars.compile("Handlebars <b>{{doesWhat}}</b>");
-      // execute the compiled template and print the output to the console
-      console.log(template({ doesWhat: "rocks!" }));
-    </script>
-    <script src="script/browse.js"></script>
+    <script src="script/main.js"></script>
   </head>
   <body>
     <div class='container'>
       <button class='login' onclick="document.getElementById('id01').style.display='block'">Login</button>
       <a class='logo' href="index.html"></a>
-      <form class="search-container" action="action_page.php">
-        <input id='search-query' type="text" placeholder="Search.." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
+      <div class="search-container">
+        <input
+          id="search-query"
+          type="text"
+          placeholder="Search.."
+          name="search"
+        />
+        <button class="search" type="submit" onclick="nextPage()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
       <div class="navbar">
         <ul>
           <li><a href=" index.html">Home</a></li>
@@ -39,6 +40,15 @@
           <li><a href="add_book.html">Add a Book</a></li>
         </ul>
       </div>
+      <br/><br/><br/><br/><br/><br/>
+      <div class="dropdown">
+        <a class="order_by">Order By</a>
+        <div class="order_by_content">
+          <a href="browse.html">A-Z</a>
+          <a href="browse.html">Price</a>
+        </div>
+      </div>
+      <h2 class='search-title'></h2>
       <div id="book_container" class='book_container'></div>
       <script id="booksTemplate" type="text/x-handlebars-template">
         {{#each this}}
@@ -85,5 +95,6 @@
         </div>
       </form>
     </div>
+    <script src="script/browse.js"></script>
   </body>
 </html>

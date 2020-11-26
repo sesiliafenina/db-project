@@ -2,6 +2,49 @@
   color: orange;
 }
 
+.search-title{
+  display: inline;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.order_by{
+  display: inline;
+  float: left;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  padding: 7px 40px;
+  text-decoration: none;
+  background-color: #7D551A;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.order_by_content {
+  display: none;
+  position: absolute;
+  background-color: #F2CF9B;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.order_by_content a{
+  background-color: #F2CF9B;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.order_by_content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .order_by_content {
+  display: block;
+}
+
 .book_content{
   margin-left: 20px;
   width: 85%;
