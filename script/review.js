@@ -19,8 +19,6 @@ function renderPage(){
   var data = localStorage.getItem('info');
   console.log(data);
   data = data.split(',');
-  //by right should do this after we move to next page
-  localStorage.removeItem('info');
   var title = data[0];
   var price = data[1];
   var asin = data[2];
@@ -28,13 +26,6 @@ function renderPage(){
   document.getElementsByClassName('book_title')[0].innerHTML = title;
   document.getElementsByClassName('author')[0].innerHTML = "Price : " + price;
   document.getElementsByClassName('asin')[0].innerHTML = asin;
-}
-
-function main(){
-  var title = document.getElementsByClassName('review_title')[0];
-  var contents = document.getElementsByClassName('review_contents')[0];
-  console.log(title.value);
-  console.log(title.contents);
 }
 
 // Example POST method implementation:
@@ -56,11 +47,27 @@ async function postData(url = '', data = {}) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-function postHttp(){
-  var data = {};
-  // postData('https://jsonplaceholder.typicode.com/posts', { answer: 42 })
-  //   .then(data => {
-  //     console.log(data);
-  //   });
-  main();
+// function addBook() {
+//   var asin = 'B85868607800' //test asin
+//   var data = {'title': document.getElementById('bookTitle').value, 'asin': asin, 'price': document.getElementById('bookPrice').value, categories:['test'], 'description': document.getElementById('bookDescription').value}
+//   console.log(data)
+//   postData('http://54.243.84.231:80/addBook', data)
+// }
+
+function addReview() {
+  var asin = document.getElementsByClassName('asin')[0].innerHTML;
+  var date = new Date()
+  var reviewDate = (date.getDate()) +' ' + (date.getMonth()+1) + ' ' + date.getFullYear()
+  console.log(reviewDate);
+  var reviewerID = 'A1FDJ34938'  //test
+  var reviewerName = 'test user' //test
+  var overall = 1  //test
+  var data = {'asin': asin, 'overall': overall, 'reviewText': document.getElementById('reviewText').value, 'summary': document.getElementById('summary').value, 'reviewTime': reviewDate, 'reviewerID': reviewerID, 'reviewerName': reviewerName}
+  console.log(data)
+  //by right should do this after we move to next page
+  localStorage.removeItem('info');
+  postData('http://54.243.84.231:80/addReview')
+  .then(data =>{
+    console.log(data);
+  })
 }

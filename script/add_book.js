@@ -27,10 +27,3 @@ function addBook() {
 
 
 }
-
-function postHttp(){
-  postData('https://jsonplaceholder.typicode.com/posts', { answer: 42 })
-    .then(data => {
-      console.log(data);
-    });
-}

@@ -47,25 +47,6 @@ async function postData(url = '', data = {}) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-function addBook() {
-  var asin = 'B85868607800' //test asin
-  var data = {'title': document.getElementById('bookTitle').value, 'asin': asin, 'price': document.getElementById('bookPrice').value, categories:['test'], 'description': document.getElementById('bookDescription').value}
-  console.log(data)
-  postData('http://54.243.84.231:80/addBook', data)
-}
-
-function addReview() {
-  var asin = 'B85868607800' //test asin 
-  var date = new Date()
-  var reviewDate = (date.getMonth()+1) +' ' + (date.getDate()) + ' ' + date.getFullYear()
-  var reviewerID = 'A1FDJ34938'  //test
-  var reviewerName = 'test user' //test
-  var overall = 1  //test
-  var data = {'asin': asin, 'overall': overall, 'reviewText': document.getElementById('reviewText').value, 'summary': document.getElementById('summary').value, 'reviewTime': reviewDate, 'reviewerID': reviewerID, 'reviewerName': reviewerName}
-  console.log(data)
-  postData('http://54.243.84.231:80/addReview')
-}
-
 function postHttp(){
   postData('https://jsonplaceholder.typicode.com/posts', { answer: 42 })
     .then(data => {
