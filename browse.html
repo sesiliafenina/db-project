@@ -53,7 +53,7 @@
       <script id="booksTemplate" type="text/x-handlebars-template">
         {{#each this}}
           <div class='item_container'>
-            <img class='book_cover' src="{{imUrl}}"/>
+            <img class='book_cover' src="{{setImage imUrl}}"/>
             <div class='book_content'>
               <button class='book_title' onclick="nextPage()" >{{title}}</button>
               <h3 class='author'>{{price}}</h3>

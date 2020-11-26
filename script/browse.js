@@ -10,7 +10,8 @@ function renderPage(){
     search.innerHTML = 'Search = ' + data;
     //by right should do this after we move to next page
     localStorage.removeItem('title');
-    getReviews('http://54.243.84.231:80/search?title=' + data)
+    var param_data = data.split(' ').join('+');
+    getReviews('http://54.243.84.231:80/search?title=' + param_data)
     .then(data => {
       console.log(data);
       createHTML(data);
@@ -21,13 +22,15 @@ function renderPage(){
   }
 }
 
-// function nextPage(){
-//   var query = document.getElementById('search-query').value;
-//   console.log(query);
-//
-//   localStorage.setItem('title', query);
-//   window.location.href = "browse.html";
-// }
+Handlebars.registerHelper('setImage', function(imUrl){
+  console.log(imUrl);
+  if (imUrl == undefined){
+    return "assets/placeholder.png";
+  }
+  else{
+    return imUrl;
+  }
+})
 
 async function getReviews(url=''){
   const response = await fetch(url, {

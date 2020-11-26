@@ -9,13 +9,23 @@
   </head>
   <body>
     <div class='container'>
-      <button class='login' onclick="document.getElementById('id01').style.display='block'">Login</button>
-      <a class='logo' href="index.html"></a>
-      <form class="search-container" action="action_page.php">
-        <input id='search-query' type="text" placeholder="Search.." name="search">
-        <button class='search' type="submit"><i class="fa fa-search"></i></button>
-      </form>
-      <div class='navbar'>
+      <button
+        class="login"
+        onclick="document.getElementById('id01').style.display='block'">Login
+      </button>
+      <a class="logo" href="index.html"></a>
+      <div class="search-container">
+        <input
+          id="search-query"
+          type="text"
+          placeholder="Search.."
+          name="search"
+        />
+        <button class="search" type="submit" onclick="nextPage()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+      <div class="navbar">
         <ul>
           <li><a href=" index.html">Home</a></li>
           <li><a href="about_us.html">About us</a></li>
@@ -23,16 +33,15 @@
             <div class="dropdown">
               <a class="dropbtn">Browse</a>
               <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+                <a href="browse.html">Increasing rating</a>
+                <a href="browse.html">Decreasing rating</a>
               </div>
             </div>
           </li>
-          <li><a href="community.html">Community</a></li>
           <li><a href="add_book.html">Add a Book</a></li>
         </ul>
       </div>
+      <br/><br/><br/><br/><br/><br/><br/><br/>
       <div class='content'>
         <p>LOREM IPSUM ARAWEOIANGOIDJMOANONROAREJORIJOIEJROIJAEORJOAJFN</p>
       </div>
