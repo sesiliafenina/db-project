@@ -12,6 +12,24 @@
 //   return false;
 // }
 
+window.onload = renderPage();
+
+function renderPage(){
+  // get data from previous page
+  var data = localStorage.getItem('info');
+  console.log(data);
+  data = data.split(',');
+  //by right should do this after we move to next page
+  localStorage.removeItem('info');
+  var title = data[0];
+  var price = data[1];
+  var asin = data[2];
+
+  document.getElementsByClassName('book_title')[0].innerHTML = title;
+  document.getElementsByClassName('author')[0].innerHTML = "Price : " + price;
+  document.getElementsByClassName('asin')[0].innerHTML = asin;
+}
+
 function main(){
   var title = document.getElementsByClassName('review_title')[0];
   var contents = document.getElementsByClassName('review_contents')[0];
