@@ -55,6 +55,7 @@ function postHttp(){
 }
 
 function nextPage(){
+  console.log('next page is called');
   var query = document.getElementById('search-query').value;
   console.log(query);
 

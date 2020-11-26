@@ -20,7 +20,7 @@
           placeholder="Search.."
           name="search"
         />
-        <button class="search" type="submit">
+        <button class="search" type="submit" onclick="nextPage()">
           <i class="fa fa-search"></i>
         </button>
       </div>
@@ -55,7 +55,7 @@
           <div class='item_container'>
             <img class='book_cover' src="{{setImage imUrl}}"/>
             <div class='book_content'>
-              <button class='book_title' onclick="nextPage()" >{{title}}</button>
+              <button class='book_title' onclick="moveToReview()" >{{title}}</button>
               <h3 class='author'>{{price}}</h3>
               <span class="fa fa-star checked"></span>
               <span class="fa fa-star checked"></span>

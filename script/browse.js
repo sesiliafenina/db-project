@@ -59,7 +59,7 @@ function createHTML(reviewData){
     bookContainer.innerHTML = ourGeneratedHTML;
 }
 
-function nextPage(){
+function moveToReview(){
   var title = document.getElementsByClassName('book_title')[0].innerHTML;
   var price = document.getElementsByClassName('author')[0].innerHTML;
   var summary = document.getElementsByClassName('book_summary')[0].innerHTML;
