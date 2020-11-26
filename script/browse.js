@@ -1,4 +1,5 @@
 window.onload = renderPage();
+var asin = null;
 
 function renderPage(){
   // get data from previous page
@@ -20,13 +21,13 @@ function renderPage(){
   }
 }
 
-function nextPage(){
-  var query = document.getElementById('search-query').value;
-  console.log(query);
-
-  localStorage.setItem('title', query);
-  window.location.href = "browse.html";
-}
+// function nextPage(){
+//   var query = document.getElementById('search-query').value;
+//   console.log(query);
+//
+//   localStorage.setItem('title', query);
+//   window.location.href = "browse.html";
+// }
 
 async function getReviews(url=''){
   const response = await fetch(url, {
@@ -59,11 +60,9 @@ function nextPage(){
   var title = document.getElementsByClassName('book_title')[0].innerHTML;
   var price = document.getElementsByClassName('author')[0].innerHTML;
   var summary = document.getElementsByClassName('book_summary')[0].innerHTML;
-  var data = [title, price, summary];
-  // {
-  //   'title' : title,
-  //   'price' : price,
-  //   'summary' : summary
-  // };
+  var asin = document.getElementsByClassName('asin')[0].innerHTML;
+  var data = [title, price, summary, asin];
 
+  localStorage.setItem('objectToPass', data);
+  window.location.href = 'reviews.html';
 }

@@ -27,6 +27,11 @@
   font-size: 20px;
 }
 
+.asin{
+  visibility: hidden;
+  margin: 0;
+}
+
 .book_content{
   margin-left: 20px;
   width: 85%;

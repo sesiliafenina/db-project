@@ -8,6 +8,12 @@
   align-items: center;
 }
 
+.asin{
+  visibility: hidden;
+  padding: 0;
+  margin: 0;
+}
+
 .order_by{
   display: inline;
   float: left;
