@@ -11,7 +11,7 @@ function renderPage(){
     //by right should do this after we move to next page
     localStorage.removeItem('title');
     var param_data = data.split(' ').join('+');
-    getReviews('http://54.243.84.231:80/search?title=' + param_data)
+    getReviews('http://54.243.84.231:5000/search?title=' + param_data)
     .then(data => {
       console.log(data);
       createHTML(data);
@@ -43,7 +43,7 @@ async function getReviews(url=''){
 }
 
 function getHttp(){
-  getReviews('http://54.243.84.231:80/search?title=test')
+  getReviews('http://54.243.84.231:5000/search?title=Saboteur+(Star+Wars:+Darth+Maul,+%231)#1)')
   .then(data => {
     console.log(data);
     createHTML(data);
@@ -64,7 +64,7 @@ function moveToReview(){
   var price = document.getElementsByClassName('author')[0].innerHTML;
   var summary = document.getElementsByClassName('book_summary')[0].innerHTML;
   var asin = document.getElementsByClassName('asin')[0].innerHTML;
-  var data = [title, price, summary, asin];
+  var data = title + "|||" + price + "|||" + summary + "|||" + asin;
 
   localStorage.setItem('objectToPass', data);
   window.location.href = 'reviews.html';

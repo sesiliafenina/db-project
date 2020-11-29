@@ -18,7 +18,7 @@ function renderPage(){
   // get data from previous page
   var data = localStorage.getItem('info');
   console.log(data);
-  data = data.split(',');
+  data = data.split('|||');
   var title = data[0];
   var price = data[1];
   var asin = data[2];
@@ -66,7 +66,7 @@ function addReview() {
   console.log(data)
   //by right should do this after we move to next page
   localStorage.removeItem('info');
-  postData('http://54.243.84.231:80/addReview')
+  postData('http://54.243.84.231:5000/addReview')
   .then(data =>{
     console.log(data);
   })

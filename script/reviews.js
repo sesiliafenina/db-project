@@ -1,14 +1,17 @@
+var asin;
+
 window.onload = renderPage();
 
 function renderPage(){
   // get data from previous page
   var data = localStorage.getItem('objectToPass');
-  data = data.split(',');
+  console.log(data);
+  data = data.split('|||');
   console.log(data);
   var title = data[0];
   var price = data[1];
   var summary = data[2];
-  var asin = data[3]
+  asin = data[3]
 
   document.getElementsByClassName('book_title')[0].innerHTML = title;
   document.getElementById('author').innerHTML = "Price : " + price;
@@ -26,8 +29,8 @@ async function getReviews(url=''){
   return response.json();
 }
 
-function getHttp(){
-  getReviews('http://54.243.84.231:80/sortByRating?rating_preference=increasing')
+function getHttp(asin){
+  getReviews('http://54.243.84.231:5000/reviews/' + asin)
   .then(data => {
     console.log(data);
     createHTML(data);
@@ -57,7 +60,7 @@ Handlebars.registerHelper('times_minus', function(n, block) {
     return accum;
 });
 
-getHttp();
+getHttp(asin);
 
 function nextPage(){
   localStorage.removeItem('objectToPass');
@@ -65,7 +68,7 @@ function nextPage(){
   var price = document.getElementsByClassName('author')[0].innerHTML;
   price = price.split(' ')[2];
   var asin = document.getElementsByClassName('asin')[0].innerHTML;
-  var data = [title, price, asin];
+  var data = title + "|||" + price + "|||" + asin;
 
   localStorage.setItem('info', data);
   window.location.href = 'review.html';

@@ -17,7 +17,6 @@
   </head>
   <body>
     <div class='container'>
-      <button class='login' onclick="document.getElementById('id01').style.display='block'">Login</button>
       <a class='logo' href="index.html"></a>
       <form class="search-container" action="action_page.php">
         <input id='search-query' type="text" placeholder="Search.." name="search">
@@ -71,33 +70,6 @@
           {{/each}}
         </script>
       </div>
-    </div>
-    <div id="id01" class="modal">
-      <span onclick="document.getElementById('id01').style.display='none'"
-            class="close" title="Close Modal">&times;</span>
-
-      <!-- Modal Content -->
-      <form class="modal-content animate" action="/action_page.php">
-        <div class="imgcontainer">
-          <img src="assets/avatar.jpg" alt="Avatar" class="avatar">
-        </div>
-
-        <div class="container">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
-
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-          <!-- <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label> -->
-        </div>
-
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-          <button type="submit" class="submitbtn">Login</button>
-        </div>
-      </form>
     </div>
     <script src="script/reviews.js"></script>
   </body>
