@@ -47,6 +47,10 @@ ul li a{
   background-color: #CE8416;
 }
 
+a:hover{
+  text-decoration: underline;
+}
+
 .logo{
   background-image: url(../assets/logo.png);
   background-size: 200px;

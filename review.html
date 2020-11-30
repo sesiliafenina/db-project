@@ -13,10 +13,17 @@
   <body>
     <div class='container'>
       <a class='logo' href="index.html"></a>
-      <form class="search-container" action="action_page.php">
-        <input id='search-query' type="text" placeholder="Search.." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
+      <div class="search-container">
+        <input
+          id="search-query"
+          type="text"
+          placeholder="Search.."
+          name="search"
+        />
+        <button class="search" type="submit" onclick="nextPage()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
       <div class="navbar">
         <ul>
           <li><a href=" index.html">Home</a></li>

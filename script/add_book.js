@@ -23,7 +23,7 @@ function addBook() {
   var asin = 'B85868607800' //test asin
   var data = {'title': document.getElementById('bookTitle').value, 'asin': asin, 'price': document.getElementById('bookPrice').value, categories:['test'], 'description': document.getElementById('bookDescription').value}
   console.log(data)
-  postData('http://54.243.84.231:80/addBook', data)
+  postData('http://54.243.84.231:5000/addBook', data)
 
 
 }

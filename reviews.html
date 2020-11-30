@@ -7,21 +7,22 @@
     <link rel='stylesheet' href='css/reviews.css'/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <script>
-      // compile the template
-      var template = Handlebars.compile("Handlebars <b>{{doesWhat}}</b>");
-      // execute the compiled template and print the output to the console
-      console.log(template({ doesWhat: "rocks!" }));
-    </script>
     <script src="script/main.js"></script>
   </head>
   <body>
     <div class='container'>
       <a class='logo' href="index.html"></a>
-      <form class="search-container" action="action_page.php">
-        <input id='search-query' type="text" placeholder="Search.." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
+      <div class="search-container">
+        <input
+          id="search-query"
+          type="text"
+          placeholder="Search.."
+          name="search"
+        />
+        <button class="search" type="submit" onclick="nextPage()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
       <div class="navbar">
         <ul>
           <li><a href=" index.html">Home</a></li>
@@ -40,7 +41,7 @@
       </div>
       <div id='book_container' class='book_container'>
         <img class='book_cover' src="assets/placeholder.png"/>
-        <div class='book_content'>
+        <div id="book_content" class='book_content'>
           <h1 id='book_title' class='book_title'>test</h1>
           <h3 id='author' class='author'>help</h3>
           <span class="fa fa-star checked"></span>
@@ -50,9 +51,10 @@
           <span class="fa fa-star"></span>
           <p id='book_summary' class='book_summary'></p>
           <p class='asin'></p>
-          <a class="default_button" onclick="nextPage()">Review</a>
+          <a class="default_button" onclick="nextPages()">Review</a>
         </div>
       </div>
+      <h1 class="review_placeholder">Loading reviews...</h1>
       <div id="reviews_container" class="reviews_container">
         <script id="reviewsTemplate" type="text/x-handlebars-template">
           {{#each this}}

@@ -3,20 +3,22 @@ var asin;
 window.onload = renderPage();
 
 function renderPage(){
-  // get data from previous page
   var data = localStorage.getItem('objectToPass');
-  console.log(data);
+  // console.log(data);
   data = data.split('|||');
   console.log(data);
   var title = data[0];
   var price = data[1];
   var summary = data[2];
   asin = data[3]
+  var imUrl = data[4]
+
 
   document.getElementsByClassName('book_title')[0].innerHTML = title;
-  document.getElementById('author').innerHTML = "Price : " + price;
+  document.getElementById('author').innerHTML = "Author : " + price;
   document.getElementById('book_summary').innerHTML = summary;
   document.getElementsByClassName('asin')[0].innerHTML = asin;
+  document.getElementsByClassName('book_cover')[0].setAttribute('src', imUrl);
 }
 
 async function getReviews(url=''){
@@ -38,6 +40,13 @@ function getHttp(asin){
 }
 
 function createHTML(reviewData){
+  var reviewsPlaceholder = document.getElementsByClassName("review_placeholder")[0];
+    if (reviewData.length == 0){
+      reviewsPlaceholder.innerHTML = "No reviews found";
+    }
+    else{
+      reviewsPlaceholder.innerHTML = "Reviews :";
+    }
     var rawTemplate = document.getElementById("reviewsTemplate").innerHTML;
     var compiledTemplate = Handlebars.compile(rawTemplate);
     var ourGeneratedHTML = compiledTemplate(reviewData);
@@ -62,7 +71,7 @@ Handlebars.registerHelper('times_minus', function(n, block) {
 
 getHttp(asin);
 
-function nextPage(){
+function nextPages(){
   localStorage.removeItem('objectToPass');
   var title = document.getElementsByClassName('book_title')[0].innerHTML;
   var price = document.getElementsByClassName('author')[0].innerHTML;

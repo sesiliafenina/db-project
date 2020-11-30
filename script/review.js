@@ -66,7 +66,7 @@ function addReview() {
   console.log(data)
   //by right should do this after we move to next page
   localStorage.removeItem('info');
-  postData('http://54.243.84.231:5000/addReview')
+  postData('http://54.243.84.231:5000/addReview', data)
   .then(data =>{
     console.log(data);
   })

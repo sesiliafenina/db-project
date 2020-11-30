@@ -32,6 +32,16 @@ Handlebars.registerHelper('setImage', function(imUrl){
   }
 })
 
+Handlebars.registerHelper('count', function(){
+  console.log(imUrl);
+  if (imUrl == undefined){
+    return "assets/placeholder.png";
+  }
+  else{
+    return imUrl;
+  }
+})
+
 async function getReviews(url=''){
   const response = await fetch(url, {
     method: 'GET',
@@ -43,7 +53,15 @@ async function getReviews(url=''){
 }
 
 function getHttp(){
-  getReviews('http://54.243.84.231:5000/search?title=Saboteur+(Star+Wars:+Darth+Maul,+%231)#1)')
+  getReviews('http://54.243.84.231:5000/search?title=test')
+  .then(data => {
+    console.log(data);
+    createHTML(data);
+  });
+}
+
+function getBookByReview(mode){
+  getReviews('http://54.243.84.231:5000/sortByRating?rating_preference=' + mode)
   .then(data => {
     console.log(data);
     createHTML(data);
@@ -51,12 +69,18 @@ function getHttp(){
 }
 
 function createHTML(reviewData){
+  if (reviewData.length != 0){
     var rawTemplate = document.getElementById("booksTemplate").innerHTML;
     var compiledTemplate = Handlebars.compile(rawTemplate);
     var ourGeneratedHTML = compiledTemplate(reviewData);
 
     var bookContainer = document.getElementById("book_container");
     bookContainer.innerHTML = ourGeneratedHTML;
+  }
+  else{
+    var message = document.getElementById("message");
+    message.innerHTML = "No Books Found";
+  }
 }
 
 function moveToReview(){
@@ -64,7 +88,8 @@ function moveToReview(){
   var price = document.getElementsByClassName('author')[0].innerHTML;
   var summary = document.getElementsByClassName('book_summary')[0].innerHTML;
   var asin = document.getElementsByClassName('asin')[0].innerHTML;
-  var data = title + "|||" + price + "|||" + summary + "|||" + asin;
+  var imUrl = document.getElementsByClassName('book_cover')[0].getAttribute('src');
+  var data = title + "|||" + price + "|||" + summary + "|||" + asin + "|||" + imUrl;
 
   localStorage.setItem('objectToPass', data);
   window.location.href = 'reviews.html';
