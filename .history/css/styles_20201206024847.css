@@ -19,7 +19,8 @@ a:hover{
 
 ul li{
   float: left;
-  
+  display: flex;
+  align-items: ;
 }
 
 h1, h2, h3{
