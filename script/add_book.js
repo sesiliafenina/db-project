@@ -1,5 +1,5 @@
-import {ip} from './ip.js'
-baseURL = ip.ip
+var baseURL = readTextFile('ip.txt')
+console.log(baseURL);
 // Example POST method implementation:
 async function postData(url = '', data = {}) {
   // Default options are marked with *
@@ -25,7 +25,31 @@ function addBook() {
   var asin = 'B85868607800' //test asin
   var data = {'title': document.getElementById('bookTitle').value, 'asin': asin, 'price': document.getElementById('bookPrice').value, categories:['test'], 'description': document.getElementById('bookDescription').value}
   console.log(data)
-  postData('http://54.243.84.231:5000/addBook', data)
+  postData('http://'+ baseURL + ':5000/addBook', data)
+  .then(data =>{
+    console.log(data);
+    alert('thank you for adding a book!')
+  })
+}
 
-
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    var allText = null;
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                allText = rawFile.responseText;
+                console.log(allText);
+                // return allText;
+                // alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+    return allText;
 }

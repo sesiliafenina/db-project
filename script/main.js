@@ -1,5 +1,5 @@
-import {ip} from './ip.js'
-baseURL = ip.ip
+var baseURL = readTextFile('ip.txt')
+console.log(baseURL);
 // console.log(ip.ip)
 // async function getData(url=''){
 //   const response = await fetch(url, {
@@ -64,4 +64,26 @@ function nextPage(){
 
   localStorage.setItem('title', query);
   window.location.href = "browse.html";
+}
+
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    var allText = null;
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                allText = rawFile.responseText;
+                console.log(allText);
+                // return allText;
+                // alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+    return allText;
 }

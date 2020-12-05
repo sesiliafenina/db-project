@@ -1,5 +1,5 @@
-import {ip} from './ip.js'
-baseURL = ip.ip
+var baseURL = readTextFile('ip.txt')
+console.log(baseURL);
 var asin;
 
 window.onload = renderPage();
@@ -34,7 +34,7 @@ async function getReviews(url=''){
 }
 
 function getHttp(asin){
-  getReviews('http://54.243.84.231:5000/reviews/' + asin)
+  getReviews('http://'+ baseURL + ':5000/reviews/' + asin)
   .then(data => {
     console.log(data);
     createHTML(data);
@@ -83,4 +83,27 @@ function nextPages(){
 
   localStorage.setItem('info', data);
   window.location.href = 'review.html';
+}
+
+
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    var allText = null;
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                allText = rawFile.responseText;
+                console.log(allText);
+                // return allText;
+                // alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+    return allText;
 }

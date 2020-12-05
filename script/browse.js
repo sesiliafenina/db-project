@@ -1,7 +1,7 @@
-import {ip} from './ip.js'
-baseURL = ip.ip
-window.onload = renderPage();
+var baseURL = readTextFile('ip.txt')
+console.log(baseURL);
 var asin = null;
+window.onload = renderPage();
 
 function renderPage(){
   // get data from previous page
@@ -13,7 +13,7 @@ function renderPage(){
     //by right should do this after we move to next page
     localStorage.removeItem('title');
     var param_data = data.split(' ').join('+');
-    getReviews('http://54.243.84.231:5000/search?title=' + param_data)
+    getReviews('http://'+ baseURL + ':5000/search?title=' + param_data)
     .then(data => {
       console.log(data);
       createHTML(data);
@@ -55,7 +55,7 @@ async function getReviews(url=''){
 }
 
 function getHttp(){
-  getReviews('http://54.243.84.231:5000/search?title=test')
+  getReviews('http://'+ baseURL + ':5000/search?title=test')
   .then(data => {
     console.log(data);
     createHTML(data);
@@ -63,7 +63,7 @@ function getHttp(){
 }
 
 function getBookByReview(mode){
-  getReviews('http://54.243.84.231:5000/sortByRating?rating_preference=' + mode)
+  getReviews('http://'+ baseURL + ':5000/sortByRating?rating_preference=' + mode)
   .then(data => {
     console.log(data);
     createHTML(data);
@@ -86,6 +86,7 @@ function createHTML(reviewData){
 }
 
 function moveToReview(){
+  // console.log(asin);
   var title = document.getElementsByClassName('book_title')[0].innerHTML;
   var price = document.getElementsByClassName('author')[0].innerHTML;
   var summary = document.getElementsByClassName('book_summary')[0].innerHTML;
@@ -95,4 +96,26 @@ function moveToReview(){
 
   localStorage.setItem('objectToPass', data);
   window.location.href = 'reviews.html';
+}
+
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    var allText = null;
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                allText = rawFile.responseText;
+                console.log(allText);
+                // return allText;
+                // alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+    return allText;
 }

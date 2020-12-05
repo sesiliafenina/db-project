@@ -1,5 +1,5 @@
-import {ip} from './ip.js'
-baseURL = ip.ip
+var baseURL = readTextFile('ip.txt')
+console.log(baseURL);
 // const btn = document.querySelector("button");
 // const post = document.querySelector(".post");
 // const widget = document.querySelector(".star-widget");
@@ -68,8 +68,31 @@ function addReview() {
   console.log(data)
   //by right should do this after we move to next page
   localStorage.removeItem('info');
-  postData('http://54.243.84.231:5000/addReview', data)
+  postData('http://'+ baseURL + ':5000/addReview', data)
   .then(data =>{
     console.log(data);
+    alert('thank you for reviewing this book!')
   })
+}
+
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    var allText = null;
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                allText = rawFile.responseText;
+                console.log(allText);
+                // return allText;
+                // alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+    return allText;
 }
