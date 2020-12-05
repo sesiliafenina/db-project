@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <title>Community</title>
+    <link rel='stylesheet' href='css/styles.css'/>
+    <link rel='stylesheet' href='css/browse.css'/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script type = "module" src="script/ip.js"></script>
+
+    <script src="script/main.js"></script>
+  </head>
+  <body>
+    <div class='container'>
+      <a class='logo' href="index.html"></a>
+      <div class="search-container">
+        <input
+          id="search-query"
+          type="text"
+          placeholder="Search.."
+          name="search"
+        />
+        <button class="search" type="submit" onclick="nextPage()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+      <div class="navbar">
+        <ul>
+          <li><a href=" index.html">Home</a></li>
+          <li><a href="about_us.html">About us</a></li>
+          <li>
+            <div class="dropdown">
+              <a class="dropbtn">Browse</a>
+              <div class="dropdown-content">
+                <a href="browse.html">Increasing rating</a>
+                <a href="browse.html">Decreasing rating</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="add_book.html">Add a Book</a></li>
+        </ul>
+      </div>
+      <br/><br/><br/><br/><br/><br/>
+      <div class="dropdown">
+        <a class="order_by">Order By</a>
+        <div class="order_by_content">
+          <a onclick="getBookByReview('decreasing')">Rating Decreasing</a>
+          <a onclick="getBookByReview('increasing')">Rating Increasing</a>
+        </div>
+      </div>
+      <h2 class='search-title'></h2>
+      <div id="book_container" class='book_container'></div>
+      <h1 id="message" class="message"></h1>
+      <script id="booksTemplate" type="text/x-handlebars-template">
+        {{#each this}}
+          <div class='item_container'>
+            <img class='book_cover' src="{{setImage imUrl}}"/>
+            <div class='book_content'>
+              <button class='book_title' onclick="moveToReview()" >{{book_title}}</button>
+              <h3 class='author'>{{author_names}}</h3>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <p class='book_summary'>{{description}}</p>
+              <p class='asin'>{{asin}}</p>
+            </div>
+          </div>
+        {{/each}}
+      </script>
+    </div>
+    <script src="script/browse.js"></script>
+  </body>
+</html>

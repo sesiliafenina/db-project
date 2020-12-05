@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <title>Community</title>
+    <link rel='stylesheet' href='css/styles.css'/>
+    <link rel='stylesheet' href='css/reviews.css'/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script type = "module" src="script/ip.js"></script>
+
+    <script src="script/main.js"></script>
+  </head>
+  <body>
+    <div class='container'>
+      <a class='logo' href="index.html"></a>
+      <div class="search-container">
+        <input
+          id="search-query"
+          type="text"
+          placeholder="Search.."
+          name="search"
+        />
+        <button class="search" type="submit" onclick="nextPage()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+      <div class="navbar">
+        <ul>
+          <li><a href=" index.html">Home</a></li>
+          <li><a href="about_us.html">About us</a></li>
+          <li>
+            <div class="dropdown">
+              <a class="dropbtn">Browse</a>
+              <div class="dropdown-content">
+                <a href="browse.html">Increasing rating</a>
+                <a href="browse.html">Decreasing rating</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="add_book.html">Add a Book</a></li>
+        </ul>
+      </div>
+      <div id='book_container' class='book_container'>
+        <img class='book_cover' src="assets/placeholder.png"/>
+        <div id="book_content" class='book_content'>
+          <h1 id='book_title' class='book_title'>test</h1>
+          <h3 id='author' class='author'>help</h3>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          <p id='book_summary' class='book_summary'></p>
+          <p class='asin'></p>
+          <a class="default_button" onclick="nextPages()">Review</a>
+        </div>
+      </div>
+      <h1 class="review_placeholder">Loading reviews...</h1>
+      <div id="reviews_container" class="reviews_container">
+        <script id="reviewsTemplate" type="text/x-handlebars-template">
+          {{#each this}}
+            <div id="reviews_content" class="reviews_content">
+              <h3>{{summary}}</h3>
+              {{#times overall}}
+                <span class="fa fa-star checked"></span>
+              {{/times}}
+              {{#times_minus overall}}
+                <span class="fa fa-star"></span>
+              {{/times_minus}}
+              <h4>{{reviewerName}}</h4>
+              <p>{{{reviewText}}}</p>
+            </div>
+          {{/each}}
+        </script>
+      </div>
+    </div>
+    <script src="script/reviews.js"></script>
+  </body>
+</html>
