@@ -87,6 +87,7 @@ function createHTML(reviewData){
     var compiledTemplate = Handlebars.compile(rawTemplate);
     var ourGeneratedHTML = compiledTemplate(reviewData);
 
+
     var bookContainer = document.getElementById("book_container");
     bookContainer.innerHTML = ourGeneratedHTML;
   }
