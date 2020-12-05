@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Good Reviews</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script  src="script/ip.js"></script>
+    <script  src="script/main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <a class="logo" href="index.html"></a>
+      <div class="search-container">
+        <input
+          id="search-query"
+          type="text"
+          placeholder="Search.."
+          name="search"
+        />
+        <button class="search" type="submit" onclick="nextPage()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+      <div class="navbar">
+        <ul>
+          <li><a href=" index.html">Home</a></li>
+          <li><a href="about_us.html">About us</a></li>
+          <li>
+            <div class="dropdown">
+              <a class="dropbtn">Browse</a>
+              <div class="dropdown-content">
+                <a href="browse.html">Increasing rating</a>
+                <a href="browse.html">Decreasing rating</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="add_book.html">Add a Book</a></li>
+        </ul>
+      </div>
+      <div class="container_2">
+        <img src="assets/background.jpg" />
+        <a class="make_review" href="browse.html">Make A Review Now!</a>
+      </div>
+    </div>
+  </body>
+</html>

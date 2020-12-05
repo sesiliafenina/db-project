@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <title>Review A Book</title>
+    <link rel='stylesheet' href='css/styles.css'/>
+    <link rel='stylesheet' href='css/review.css'/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+<script type = "module" src="script/ip.js"></script>
+    
+<script src="script/main.js"></script>
+  </head>
+  <body>
+    <div class='container'>
+      <a class='logo' href="index.html"></a>
+      <div class="search-container">
+        <input
+          id="search-query"
+          type="text"
+          placeholder="Search.."
+          name="search"
+        />
+        <button class="search" type="submit" onclick="nextPage()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+      <div class="navbar">
+        <ul>
+          <li><a href=" index.html">Home</a></li>
+          <li><a href="about_us.html">About us</a></li>
+          <li>
+            <div class="dropdown">
+              <a class="dropbtn">Browse</a>
+              <div class="dropdown-content">
+                <a href="browse.html">Increasing rating</a>
+                <a href="browse.html">Decreasing rating</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="add_book.html">Add a Book</a></li>
+        </ul>
+      </div>
+      <div class='review'>
+        <img class='book_cover' src="assets/placeholder.png"/>
+        <div class='book_content'>
+          <a class='book_title'></a>
+          <h3 class='author'></h3>
+          <div class="center">
+            <div class="stars">
+              <input type="radio" id="five" name="rate" value="5">
+              <label for="five"></label>
+              <input type="radio" id="four" name="rate" value="4">
+              <label for="four"></label>
+              <input type="radio" id="three" name="rate" value="3">
+              <label for="three"></label>
+              <input type="radio" id="two" name="rate" value="2">
+              <label for="two"></label>
+              <input type="radio" id="one" name="rate" value="1">
+              <label for="one"></label>
+              <span class="result"></span>
+            </div>
+          </div>
+          <br/><br/><br/>
+          <p>Review Title :</p>
+          <input id = 'summary' class='review_title' type="text" placeholder="Title" name="search">
+          <!-- IM SORRY I CANT FIGURE OUT HOW TO WRITE THIS ON 2 LINES -->
+          <br/><br/>
+          <textarea id = 'reviewText' class="review_contents" rows="8" cols="80" placeholder="Write your reviews here..."></textarea>
+          <br/><br/>
+          <a class="default_button_1" href="reviews.html">Back</a>
+          <a class="default_button_2" onclick="addReview()">Submit Review</a>
+          <p class='asin'>{{asin}}</p>
+        </div>
+      </div>
+    </div>
+    <script src="script/review.js"></script>
+  </body>
+</html>
