@@ -87,3 +87,8 @@ function readTextFile(file)
     rawFile.send(null);
     return allText;
 }
+
+function moveToBrowse(mode){
+  localStorage.setItem('title', mode);
+  window.location.href = 'browse.html';
+}

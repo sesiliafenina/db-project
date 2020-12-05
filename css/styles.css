@@ -5,6 +5,11 @@ ul {
   background-color: #7D551A;
 }
 
+a:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .navbar{
   display: block;
   float: left;

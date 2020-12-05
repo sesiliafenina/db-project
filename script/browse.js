@@ -6,7 +6,10 @@ window.onload = renderPage();
 function renderPage(){
   // get data from previous page
   var data = localStorage.getItem('title');
-  if (data != undefined){
+  if (data == 'increasing' || data == 'decreasing'){
+    getBookByReview(data);
+  }
+  else if (data != undefined){
     console.log(data);
     var search = document.getElementsByClassName('search-title')[0];
     search.innerHTML = 'Search = ' + data;
@@ -64,6 +67,14 @@ function getHttp(){
 
 function getBookByReview(mode){
   getReviews('http://'+ baseURL + ':5000/sortByRating?rating_preference=' + mode)
+  .then(data => {
+    console.log(data);
+    createHTML(data);
+  });
+}
+
+function getBookByGenre(genre){
+  getReviews('http://'+ baseURL + ':5000/sortByGenres?genre=' + genre)
   .then(data => {
     console.log(data);
     createHTML(data);
