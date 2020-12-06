@@ -15,13 +15,10 @@ function renderPage(){
     search.innerHTML = 'Searching for = ' + data;
     //by right should do this after we move to next page
     localStorage.removeItem('title');
-    // var splitted = data.split(',')
-    // var title = splitted[0]
-    // var author = splitted[1]
-    // console.log("title:" + title)
-    // console.log("author:" + author)
+    console.log("LOOK HERE" + data)
+    var splitted = data.split()
     var param_data = data.split(' ').join('+');
-    getReviews('http://'+ baseURL + ':5000/search?title=' + param_data + '&' + 'author=' + param_data)
+    getReviews('http://'+ baseURL + ':5000/search?title=' + param_data)
     .then(data => {
       console.log(data);
       createHTML(data);
