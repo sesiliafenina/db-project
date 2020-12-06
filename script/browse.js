@@ -7,22 +7,6 @@ function renderPage(){
   // get data from previous page
   var data = localStorage.getItem('title');
   if (data == 'increasing' || data == 'decreasing'){
-    if (data == 'increasing'){
-      var star1 = document.getElementsByClassName('fa fa-star')[0];
-      star1.className = "fa fa-star checked";
-    }
-    else{
-      var star1 = document.getElementsByClassName('fa fa-star')[0];
-      var star2 = document.getElementsByClassName('fa fa-star')[1];
-      var star3 = document.getElementsByClassName('fa fa-star')[2];
-      var star4 = document.getElementsByClassName('fa fa-star')[3];
-      var star5 = document.getElementsByClassName('fa fa-star')[4];
-      star1.className = "fa fa-star checked";
-      star2.className = "fa fa-star checked";
-      star3.className = "fa fa-star checked";
-      star4.className = "fa fa-star checked";
-      star5.className = "fa fa-star checked";
-    }
     getBookByReview(data);
   }
   else if (data != undefined){
@@ -42,6 +26,12 @@ function renderPage(){
       console.log(data);
       createHTML(data);
     });
+    var star1 = document.getElementsByClassName('fa fa-star')[0];
+    var star2 = document.getElementsByClassName('fa fa-star')[1];
+    var star3 = document.getElementsByClassName('fa fa-star')[2];
+    star1.className += " checked";
+    star2.className += " checked";
+    star3.className += " checked";
   }
   else{
     getHttp();
@@ -91,6 +81,22 @@ function getBookByReview(mode){
   .then(data => {
     console.log(data);
     createHTML(data);
+    if (mode == 'increasing'){
+      var star1 = document.getElementsByClassName('fa fa-star')[0];
+      star1.className += " checked";
+    }
+    else{
+      var star1 = document.getElementsByClassName('fa fa-star')[0];
+      var star2 = document.getElementsByClassName('fa fa-star')[1];
+      var star3 = document.getElementsByClassName('fa fa-star')[2];
+      var star4 = document.getElementsByClassName('fa fa-star')[3];
+      var star5 = document.getElementsByClassName('fa fa-star')[4];
+      star1.className += " checked";
+      star2.className += " checked";
+      star3.className += " checked";
+      star4.className += " checked";
+      star5.className += " checked";
+    }
   });
 }
 
