@@ -12,16 +12,12 @@ function renderPage(){
   else if (data != undefined){
     console.log(data);
     var search = document.getElementsByClassName('search-title')[0];
-    search.innerHTML = 'Searching for = ' + data;
+    console.log("LOOK HERE" + search)
+    search.innerHTML = 'Search = ' + data;
     //by right should do this after we move to next page
     localStorage.removeItem('title');
-    // var splitted = data.split(',')
-    // var title = splitted[0]
-    // var author = splitted[1]
-    // console.log("title:" + title)
-    // console.log("author:" + author)
     var param_data = data.split(' ').join('+');
-    getReviews('http://'+ baseURL + ':5000/search?title=' + param_data + '&' + 'author=' + param_data)
+    getReviews('http://'+ baseURL + ':5000/search?title=' + param_data)
     .then(data => {
       console.log(data);
       createHTML(data);

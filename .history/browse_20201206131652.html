@@ -43,8 +43,7 @@
       <div class="dropdown">
         <a class="order_by">Genres</a>
         <div class="order_by_content">
-          <!-- <a onclick="getBookByGenre('Books')">Books</a>
-          <a onclick="getBookByGenre('Nonfiction')">Nonfiction</a> -->
+          /
           <a onclick="getBookByGenre('Horror')">Horror</a>
           <a onclick="getBookByGenre('Fantasy')">Fantasy</a>
           <a onclick="getBookByGenre('Short+Stories')">Short Stories</a>
@@ -60,7 +59,7 @@
           <div class='item_container'>
             <img class='book_cover' src="{{setImage imUrl}}"/>
             <div class='book_content'>
-              <button class='book_title' onclick="moveToReview({{asin}})" >{{book_title}}</button>
+              <button class='book_title' onclick="moveToReview()" >{{book_title}}</button>
               <h3 class='author'>{{author_names}}</h3>
               <span class="fa fa-star checked"></span>
               <span class="fa fa-star checked"></span>

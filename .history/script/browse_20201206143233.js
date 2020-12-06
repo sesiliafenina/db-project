@@ -21,7 +21,7 @@ function renderPage(){
     // console.log("title:" + title)
     // console.log("author:" + author)
     var param_data = data.split(' ').join('+');
-    getReviews('http://'+ baseURL + ':5000/search?title=' + param_data + '&' + 'author=' + param_data)
+    getReviews('http://'+ baseURL + ':5000/search?title=' + param_data + '&' + 'author=')
     .then(data => {
       console.log(data);
       createHTML(data);

@@ -12,16 +12,11 @@ function renderPage(){
   else if (data != undefined){
     console.log(data);
     var search = document.getElementsByClassName('search-title')[0];
-    search.innerHTML = 'Searching for = ' + data;
+    search.innerHTML = 'Search = ' + data;
     //by right should do this after we move to next page
     localStorage.removeItem('title');
-    // var splitted = data.split(',')
-    // var title = splitted[0]
-    // var author = splitted[1]
-    // console.log("title:" + title)
-    // console.log("author:" + author)
     var param_data = data.split(' ').join('+');
-    getReviews('http://'+ baseURL + ':5000/search?title=' + param_data + '&' + 'author=' + param_data)
+    getReviews('http://'+ baseURL + ':5000/search?title=' + param_data)
     .then(data => {
       console.log(data);
       createHTML(data);
@@ -89,6 +84,22 @@ function getBookByGenre(genre){
 function createHTML(reviewData){
   if (reviewData.length != 0){
     var rawTemplate = document.getElementById("booksTemplate").innerHTML;
+    var compiledTemplate = Handlebars.compile(rawTemplate);
+    var ourGeneratedHTML = compiledTemplate(reviewData);
+
+
+    var bookContainer = document.getElementById("book_container");
+    bookContainer.innerHTML = ourGeneratedHTML;
+  }
+  else{
+    var message = document.getElementById("message");
+    message.innerHTML = "No Books Found";
+  }
+}
+
+function createHTML2(reviewData){
+  if (reviewData.length != 0){
+    var rawTemplate = document.getElementById("booksTemplate2").innerHTML;
     var compiledTemplate = Handlebars.compile(rawTemplate);
     var ourGeneratedHTML = compiledTemplate(reviewData);
 
